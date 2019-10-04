@@ -1,0 +1,77 @@
+{% load static %} {% load format %} {% load humanize %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+		<title>Epic Cash Center - {{ title }}</title>
+	{% else %}
+		<title>Epic Cash Center</title>
+	{% endif %}
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "style.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+</head>
+
+<!-- <a href="#"><button type="button" class=" btn shadow ml-3 text-warning btn-dark">EPIC Markets</button></a>
+<button type="button" class="btn shadow ml-3 text-warning btn-dark ">fastepic Exchange</button> -->
+
+<body background="{% static "images\bg.png" %}">
+<br>
+<div class="container-fluid shadow navbar">
+    <div class="row align-items-center">
+        <div class="col ml-4 mb-3 col-lg-5 col-sm-5 col-xs-5"><a href="https://epic.tech" target="_blank"><img src="{% static "images\logo.png" %}"></a></div>
+        <div class="ml-3 mb-2 justify-content-center">
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col mr-4">
+            <a href="https://t.me/EpicCash" target="_blank"><img src="{% static "images/telegram.jpg" %}" style="width: 40px;" class=" img-fluid rounded-circle"></a>
+        </div>
+    </div>
+</div>
+<br><br>
+
+{% block content %}
+
+
+
+{% endblock %}
+<br><br>
+<div class="row row4">
+    <div class="footer shadow col-xs-12 col-md-12">
+        <footer class="py-4 rounded text-white-50">
+            <div class="container text-center">
+                <small>`blacktyger @ 2019 for Epic Community ^^</small>
+            </div>
+        </footer>
+    </div>
+</div>
+<br>
+
+<!--<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,epic-cash,grin,beam" currency="usd" font-color="#f1f1f1"  background-color="#393838" locale="en">
+</coingecko-coin-price-marquee-widget> -->
+
+
+
+</body>
+</html>
