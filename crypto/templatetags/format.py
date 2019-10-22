@@ -8,12 +8,6 @@ date = datetime.datetime.now()
 
 register = template.Library()
 
-@register.filter('last_trade')
-def last_trade(value):
-    value = str(value)
-    new_value = value[0:10] + " " + value[11:19]
-    return timeago.format(new_value, now)
-
 
 @register.filter(name='format')
 def format(value, fmt):

@@ -13,7 +13,7 @@ SECRET_KEY = '^3i2r0h^zdx_uxo+$674j91m38$f1+u1cwdnb#@*6^16-jhx%#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ticker.epic-ticker.tech', 'blacktyger.pythonanywhere.com', 'www.epic-ticker.tech', 'epic-ticker.tech']
 
 
 # Application definition
@@ -26,8 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'crypto',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -37,6 +42,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
+
 ]
 
 ROOT_URLCONF = 'epiccash.urls'
@@ -107,4 +115,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/blacktyger/epic-market/epiccash/crypto'

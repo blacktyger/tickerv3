@@ -5,7 +5,7 @@
     {% if title %}
 		<title>Epic Cash Center - {{ title }}</title>
 	{% else %}
-		<title>Epic Cash Center</title>
+		<title>Epic Cash Ticker</title>
 	{% endif %}
 
     <!-- Font Awesome -->
@@ -35,43 +35,45 @@
 <button type="button" class="btn shadow ml-3 text-warning btn-dark ">fastepic Exchange</button> -->
 
 <body background="{% static "images\bg.png" %}">
-<br>
-<div class="container-fluid shadow navbar">
-    <div class="row align-items-center">
-        <div class="col ml-4 mb-3 col-lg-5 col-sm-5 col-xs-5"><a href="https://epic.tech" target="_blank"><img src="{% static "images\logo.png" %}"></a></div>
-        <div class="ml-3 mb-2 justify-content-center">
-        </div>
-    </div>
-    <div class="row align-items-center">
-        <div class="col mr-4">
-            <a href="https://t.me/EpicCash" target="_blank"><img src="{% static "images/telegram.jpg" %}" style="width: 40px;" class=" img-fluid rounded-circle"></a>
+
+<div class="container-fluid " style="padding-top: 10px;">
+    <div class="row">
+
+</div>
+
+<div class="container-fluid  text-center" style="background: rgb(41, 43, 44, 0.0); padding-bottom: 30px; padding-top: 3px; justify-content: center;">
+    <div class="row justify-content-center">
+        <div class="col" style="padding-bottom: 15;"><a href="{% url 'home' %}"><img src="{% static "images\logot.png" %}" style="height: 100px;"></a></div>
+        <div class="col" style="padding-bottom: 15; padding-top: 5;">
+            <a href="https://t.me/EpicCash" target="_blank"><button type="button" style="padding: 7px 9px;" class="btn btn-dark btn-sm">
+                <img src="{% static "images/telegramx.jpg" %}" style="width: 28px; padding: 0px 5px;" class=" img-fluid rounded-circle"> Telegram
+            </button></a>
+            <a href="https://epic.tech" target="_blank"><button type="button" style="padding: 7px 9px;" class="btn btn-dark btn-sm">
+                <img src="{% static "images/site.jpg" %}" style="width: 30px; padding: 0px 5px;" class=" img-fluid rounded-circle"> Epic.tech
+            </button></a>
+            <a href="https://www.reddit.com/r/epiccash" target="_blank"><button style="padding: 7px 9px;" type="button" class="btn btn-dark btn-sm">
+                <img src="{% static "images/reddit.png" %}" style="width: 30px; padding: 0px 5px;" class=" img-fluid rounded-circle">Reddit
+            </button></a>
         </div>
     </div>
 </div>
-<br><br>
 
 {% block content %}
 
 
 
 {% endblock %}
-<br><br>
-<div class="row row4">
+<div class="row row4" style="padding: 17px 10px;">
     <div class="footer shadow col-xs-12 col-md-12">
         <footer class="py-4 rounded text-white-50">
             <div class="container text-center">
+                <small>EPIC-CASH Donations Adress:</small><br>
+                <a href="#" style="color: warning"><small>https://epic-ticker.tech:3415</small><br></a>
                 <small>`blacktyger @ 2019 for Epic Community ^^</small>
             </div>
         </footer>
     </div>
 </div>
-<br>
-
-<!--<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,epic-cash,grin,beam" currency="usd" font-color="#f1f1f1"  background-color="#393838" locale="en">
-</coingecko-coin-price-marquee-widget> -->
-
-
 
 </body>
 </html>
