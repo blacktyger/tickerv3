@@ -1,13 +1,6 @@
 from django import template
 from django.template.defaulttags import register
-import timeago, datetime
 import pytz
-
-now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
-date = datetime.datetime.now()
-
-register = template.Library()
-
 
 @register.filter(name='format')
 def format(value, fmt):

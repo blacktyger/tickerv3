@@ -13,7 +13,7 @@ SECRET_KEY = '^3i2r0h^zdx_uxo+$674j91m38$f1+u1cwdnb#@*6^16-jhx%#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ticker.epic-ticker.tech', 'blacktyger.pythonanywhere.com', 'www.epic-ticker.tech', 'epic-ticker.tech']
+ALLOWED_HOSTS = ['localhost', 'localhost:8000', 'ticker.epic-ticker.tech', 'blacktyger.pythonanywhere.com', 'www.epic-ticker.tech', 'epic-ticker.tech']
 
 
 # Application definition
@@ -118,4 +118,5 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/blacktyger/epic-market/epiccash/crypto'
+STATIC_ROOT = '/static/'
+# STATIC_ROOT = '/home/blacktyger/epic-market/epiccash/crypto'

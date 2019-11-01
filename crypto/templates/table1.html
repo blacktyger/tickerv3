@@ -1,0 +1,153 @@
+{% load static %} {% load format %} {% load humanize %}
+
+<html>
+
+<body>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $('#market').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false
+            });
+        });
+
+        $(document).ready(function () {
+            $('#exchange').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false
+            });
+        });
+    </script>
+
+
+    <table id="market" style="overflow: hidden; font-size: 18px;" class="table table-hover table-dark">
+        <thead id="thead2" class="thead">
+            <tr class="card-title text-center">
+                <th scope="col">Currency Pair <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Price <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">24h <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">7 Days <small><i class="fas fa-sort"></i></small></th>
+                <th class="dis" scope="col">24h High <small><i class="fas fa-sort"></i></small></th>
+                <th class="dis" scope="col">24h Low <small><i class="fas fa-sort"></i></small></th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr class="align-baseline">{% for x in api_epic_usd %}
+                <td>USD(T)</td>
+                <td>{{ x.current_price|usd3 }} </td>
+                <td>{{ x.price_change_percentage_24h_in_currency|procent }}
+                    {{ arrow_check_price24|safe }}
+                </td>
+                <td>{{ x.price_change_percentage_7d_in_currency|procent }}
+                    {{ arrow_check_price7d|safe }}
+                </td>
+                <td class="dis">{{ x.high_24h|usd3 }}</td>
+                <td class="dis">{{ x.low_24h|usd3 }}</td>
+            </tr>{% endfor %}
+
+            <tr>{% for x in api_epic_btc %}
+                <td>Bitcoin</td>>
+                <td>{{ x.current_price|btc }}</td>
+                <td>{{ x.price_change_percentage_24h_in_currency|procent }}
+                    {{ arrow_check_price24btc|safe }}</td>
+                <td>{{ x.price_change_percentage_7d_in_currency|procent }}
+                    {{ arrow_check_price7dbtc|safe }}
+                </td>
+                <td class="dis">{{ x.high_24h|btc }}</td>
+                <td class="dis">{{ x.low_24h|btc }}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Start row with Exchange Table -->
+
+    <table id="exchange" style="overflow: hidden; font-size: 18px;" class="table table-hover table-dark">
+        <thead id="thead2" class="thead">
+            <tr class="card-title text-center">
+                <th scope="col">Exchange <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Price <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Spread <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Volume 24h <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Last Trade <small class="muted"> UTC <i class="fas fa-sort"></i></small></th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {% for x in api_fast.stocks %}
+            <tr>
+                <th class="align-middle"><a href="https://epic-ticker.tech/stock/" target="_blank"><button type="button"
+                            class="btn btn-sm n_button mb-1 mr-2"><i class="fas fa-chart-line"></i> HOME EPIC
+                            BTC</button></a>
+                </th>
+                <td>{{ x.lastprice|btc }}<br><small>{{ x.lastprice|btctousd|usd2}}</small></td>
+                <td>{{ fast_spread|procent }}</td>
+                <td>{{ x.volume24h|btc }}<br><small>{{ x.volume24h|btctousd|usd2}}</small></td>
+                </td>
+                <td>{{ x.datelasttransaction|last_trade }}<br><small
+                        class="text-muted">{{ x.datelasttransaction|datextime }}</small></td>
+            </tr>
+            {% endfor %}
+
+            {% for x in api_ticker.tickers %}
+            {% if x.target == "USDT" %}
+            <tr>
+                {% if x.market.identifier == "bihodl" %}
+                <th class="align-middle"><a href="https://www.bihodl.com/#/exchange/epic_usdt" target="_blank"><button
+                            type="button" class="btn btn-sm n_button mb-1 mr-2"><i class="fas fa-chart-line"></i>
+                            {{ x.market.name }}
+                            {{x.target }}</button></a></th>
+                {% else %}
+                <th class="align-middle" scope="row"><a href="https://www.citex.co.kr/#/trade/EPIC_USDT"
+                        target="_blank"><button type="button" class="btn btn-sm n_button mb-1 mr-2"><i
+                                class="fas fa-chart-line"></i> {{ x.market.name }}
+                            {{x.target }}</button></a></th>
+                {% endif %}
+                <td>{{x.last|usd3}}<br><small>{{ x.converted_last.btc|btc}}</small></td>
+                <td>{{x.bid_ask_spread_percentage|procent}}</td>
+                <td>$
+                    {{x.converted_volume.usd|cala|intspace}}<br><small>{{ x.converted_volume.btc|btc}}</small>
+                </td>
+                <td>{{x.last_traded_at|last_trade}}<br><small class="text-muted">{{x.last_traded_at|datextime}}</small>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+
+            {% for x in api_ticker.tickers %}
+            {% if x.target == "BTC" %}
+            <tr>
+                {% if x.market.identifier == "citex" %}
+                <th class="align-middle"><a href="https://www.citex.co.kr/#/trade/EPIC_BTC" target="_blank"><button
+                            type="button" class="btn btn-sm n_button mb-1 mr-2"><i class="fas fa-chart-line"></i>
+                            {{ x.market.name }}
+                            {{x.target }}</button></a></th>
+                {% else %}
+                <th scope="row"><a href="https://www.chainrift.com/trading?coinpair=EPIC/BTC&" target="_blank"><button
+                            type="button" class="btn btn-sm n_button mb-1 mr-2"><i class="fas fa-chart-line"></i>
+                            {{ x.market.name }}
+                            {{x.target }}</button></a></th>
+                {% endif %}
+                <td>{{x.last|btc}}<br><small>{{ x.converted_last.usd|usd2}}</small></td>
+                <td>{{x.bid_ask_spread_percentage|procent}}</td>
+                <td>{{x.converted_volume.btc|btc}}<br><small>{{ x.converted_volume.usd|usd2}}</small>
+                </td>
+                <td>{{x.last_traded_at|last_trade}}<br><small class="text-muted">{{x.last_traded_at|datextime}}</small>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    </div>
+    </div>
+    <!-- END row with markets -->
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+{% load static %} {% load format %} {% load humanize %}
+
+<html>
+<style>
+
+    .card-link:hover {
+        background: rgb(41, 43, 44, 0.5);
+    }
+    .card-news {
+        border-radius: 10px;
+        background: rgb(41, 43, 44, 0.7);
+        filter: alpha(opacity=50);
+        /* For IE8 and earlier */
+    }
+
+    .card-title1 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+    }
+
+    .card-header {
+        margin-bottom: 0px;
+    }
+
+    /* Red border */
+    hr.new1 {
+        border-top: 1px solid rgb(54, 54, 54);
+    }
+
+
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+</style>
+
+
+<body>
+    {% for x in api_epic_usd %}
+
+    <!-- START ROW 1-->
+    <div class="row no-gutters">
+        <div class="col-lg-3 col-md-3 col-sm-6 px-1 pb-2">
+            <!-- START Card 1-->
+            <div class="card text-white h-100 pb-2">
+                <div class="card-news" style="background: rgba(112, 112, 112, 0.1);">
+                    <div class="card-title text-center pt-1">Epic-Cash Price:</div>
+                </div>
+                <table class="table1 w-100 ">
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pb-1 pt-1">
+                                USD(T):
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">BTC:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">7D:
+                            </div>
+                        </td>
+                        <td>
+                            <div class="card-text text-right pr-2">
+                                <span class="card-title1">{{ x.current_price|usd3}}</span>
+                                <small>{{ arrow_check_price24|safe}}</small>
+                            </div>
+                            <div class="card-text text-right pr-2">
+                                {% for x in api_epic_btc %}{{ x.current_price|btc}}
+                                <small>{{ arrow_check_price24btc|safe}}{%endfor%}</small>
+                            </div>
+                            <div class="card-text text-right pt-1 pr-2">
+                                {{ x.price_change_percentage_24h_in_currency|procent}}
+                                <small>{{ arrow_check_price24|safe}}</small>
+                            </div>
+                            <div class="card-text text-right pr-2">
+                                {{ x.price_change_percentage_7d_in_currency|procent}}
+                                <small>{{ arrow_check_price7d|safe}}</small>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- END Card 1-->
+
+        <!-- START CARD 2-->
+        <div class="col-lg-3 col-md-3 col-sm-6 px-1 pb-2">
+            <div class="card text-white h-100 pb-2">
+                <div class="card-news" style="background: rgba(112, 112, 112, 0.1);">
+                    <div class="card-title text-center pt-1">24H Volume:</div>
+                </div>
+                <table class="table1 w-100 ">
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-2 pb-1">
+                                TOTAL:</div>
+                            <div class="card-text text-white-50 font-weight-bold white-50d text-center pr-5 pt-1 pb-1">
+                                USD(T):
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1 pb-1">
+                                BTC:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1">
+                                CHANGE:
+                            </div>
+                        </td>
+                        <td>
+                            <div class="card-text text-right pt-1 pr-2 pb-1">
+                                <span class="card-title1">${{total_vol|cala|intspace}}</span>
+                                <span class="text-muted"><small>{{total_vol|usdtobtc|btc3}}</small></span>
+                            </div>
+                            <div class="card-text text-right pr-2 pb-1">
+                                $ {{ total_vol_usd|cala|intspace }}
+                            </div>
+                            <div class="card-text text-right pr-2 pt-1 pb-1">
+                                {{ total_vol_btc|btc3 }}
+                            </div>
+
+                            <div class="card-text text-right pr-2">
+                                {{ check_vol|procent}}
+                                <small>{{ arrow_check_vol|safe}}</small>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- START Card 2-->
+
+        <!-- START Card 3-->
+        <div class="col-lg-3 col-md-3 col-sm-6 px-1 pb-2">
+            <div class="card text-white h-100 pb-2">
+                <div class="card-news" style="background: rgba(112, 112, 112, 0.1);">
+                    <div class="card-title text-center pt-1">All Time High:</div>
+                </div>
+                <table class="table1 w-100 ">
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2 pb-1">
+                                USD(T):
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pb-1 pt-1">
+                                BTC:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1 ">
+                                DATE:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">
+                                CHANGE:</div>
+                        </td>
+                        <td>
+                            <div class="card-text text-right pr-2 pt-1 pb-1">
+                                <span class="card-title1">{{ x.ath|usd3}}</span>
+                            </div>
+                            <div class="card-text text-right pr-2 pb-0">
+                                {% for x in api_epic_btc %}{{ x.ath|btc}}{%endfor%}
+                            </div>
+                            <div class="card-text text-right pt-2 pr-2 pb-1">
+                                {{ x.ath_date|datex}}
+                                <small><span class="text-muted">{{ x.ath_date|last_trade}}</span></small>
+                            </div>
+                            <div class="card-text text-right pr-2">
+                                {{ x.ath_change_percentage|procent}}
+                                <small>{{ arrow_check_price7d|safe}}</small>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- END Card 3-->
+
+        <!-- STATR CARD 4-->
+        <div class="col-lg-3 col-md-3 col-sm-6 px-1 pb-2">
+            <div class="card text-white h-100 pb-2">
+                <div class="card-news" style="background: rgba(112, 112, 112, 0.1);">
+                    <div class="card-title text-center pt-1">Market Cap:</div>
+                </div>
+                <table class="table1 w-100 ">
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2 pb-1">
+                                SUPPLY:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-0 pb-1">
+                                USD(T):
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1">
+                                BTC:
+                            </div>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
+                            </div>
+                        </td>
+                        <td>
+                            <div class="card-text text-right pr-2 pb-1 pt-2">
+                                {% for k, v in api_ticker.market_data.items %}
+                                {% if k == 'circulating_supply' %}
+                                {{ v|cala|intspace }} <img style="height: 20px;" class="pb-1"
+                                    src="{% static 'images/btn1.png' %}">
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="card-text text-right pr-2 pb-1">
+                                $ {{ x.market_cap|cala|intspace }}
+                            </div>
+                            <div class="card-text text-right pt-1 pr-2 pb-1">
+                                {% for x in api_epic_btc %}{{ x.market_cap|btc3 }}{%endfor%}
+                            </div>
+                            <div class="card-text text-right pr-2">
+                                {{ x.market_cap_change_percentage_24h|procent}}
+                                <small>{{ arrow_check_cap|safe}}</small>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- END Card 4-->
+    </div>
+    <!-- END ROW 1-->
+
+    <!-- START ROW 2-->
+
+    <div class="row pb-2 pt-3 no-gutters">
+        <!-- START Card 1-->
+
+        <div class="col-lg-6 col-md-6 col-sm-12 px-1 pt-1">
+            <a href="{% url 'fastepic' %}">
+                <div class="card card-link text-white h-100 pb-0">
+                    <div class="card-title1 text-center"><img class="card-img pt-2 mr-2 w-75"
+                            src="{% static 'images/t_fastepiclogo1.png' %}" alt="fastepic.eu">
+                        <hr>
+                        <p class="px-4 ">Read more about place where you can mine, exchange and store your <span class="text-white"><img style="height: 20px;"
+                            class="ml-1 pb-1" src="{% static 'images/btn1.png' %}"> Epic-Cash</span> easier, faster and more secure than ever!</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- END Card 1-->
+
+        <!-- START Card 2-->
+        <div class="col-lg-6 col-md-6 col-sm-12 px-1 pt-1">
+            <div class="card text-white h-100 pb-0">
+
+
+            </div>
+        </div>
+    </div>
+    <!-- END Card 1-->
+
+
+</body>
+
+</html>
+
+<!-- <a href="#">
+    <div class="card h-100 card-news text-white">
+        <img class="card-img py-2 px-2 w-100" src="{% static 'images/t_fastepiclogo.png' %}"
+            alt="fastepic.eu" style="display: block; margin-left: auto;margin-right: auto;">
+
+        <p class="card-text mx-3 my-2 text-center">It's place where you can mine your epics, trade
+            them and store secure.
+            There is no registration, all you need is just your email!</p>
+
+        <span class="card-text mt-5 text-center text-muted mb-0"><small> Click for more
+            </small></span>
+    </div>
+</a> -->
