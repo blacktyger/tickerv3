@@ -2,10 +2,10 @@
 
 <html>
 <style>
-
     .card-link:hover {
         background: rgb(41, 43, 44, 0.5);
     }
+
     .card-news {
         border-radius: 10px;
         background: rgb(41, 43, 44, 0.7);
@@ -229,10 +229,20 @@
             <a href="{% url 'fastepic' %}">
                 <div class="card card-link text-white h-100 pb-0">
                     <div class="card-title1 text-center"><img class="card-img pt-2 mr-2 w-75"
-                            src="{% static 'images/t_fastepiclogo1.png' %}" alt="fastepic.eu">
+                            src="{% static 'images/t_fastepiclogo1.png' %}" alt="fastepic.eu"></a>
                         <hr>
-                        <p class="px-4 ">Read more about place where you can mine, exchange and store your <span class="text-white"><img style="height: 20px;"
-                            class="ml-1 pb-1" src="{% static 'images/btn1.png' %}"> Epic-Cash</span> easier, faster and more secure than ever!</p>
+                        <div class="px-4 pb-3">
+                            <span style="font-size: 20px;"> Make your first steps in to the <span
+                                    class="text-white"><img style="height: 23px;" class="ml-1 pb-1"
+                                        src="{% static 'images/btn1.png' %}"> Epic-Cash </span>
+                                world with <a class="text-warning" style="font-size: 20px;" href="https://fastepic.eu"
+                                    target="_blank">fastepic.eu</a>! Create your first wallet, buy or sell your coins, 
+                                    send to and receive from anyone just by using email address. There is also pool for miners, 
+                                    ready to use straight away without configuration!
+                                    <br><small><a class="text-muted" href="{% url 'fastepic' %}">Read more...</a></small>
+
+                            </span>
+                        </div>
                     </div>
                 </div>
             </a>

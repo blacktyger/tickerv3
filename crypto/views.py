@@ -218,6 +218,7 @@ def home(request):
         'footer': 'footer.html',
         'table1': 'table1.html',
         'cards': 'cards.html',
+        'left_nav': 'left_nav.html',
     }
 
     return render(request, 'home.html', ctx)
@@ -230,6 +231,7 @@ def fastepic(request):
         'footer': 'footer.html',
         'table1': 'table1.html',
         'cards': 'cards.html',
+        'left_nav': 'left_nav.html',
     }
 
     return render(request, 'fastepic.html', ctx)
