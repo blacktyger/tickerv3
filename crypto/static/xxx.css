@@ -1,0 +1,283 @@
+
+.body {
+    background-color: rgb(41, 43, 44, 0.9);
+}
+
+.card-link:hover {
+    opacity: 0.9;
+}
+
+.logo {
+        padding-left: 5px;
+        padding-bottom: 20px;
+    }
+
+    .epicnavbar {
+        font-family: Georgia, serif;
+        background-color: rgb(41, 43, 44, 0.5);
+        box-shadow: 2px 1px 10px rgb(15, 15, 15);
+        /* text-shadow: 2px 2px 5px black; */
+        border-right: none;
+
+        /* padding: 15px 15px; */
+    }
+
+    .marquee {
+        color: azure;
+        background-color: transparent;
+        padding-left: 35px;
+        text-shadow: 2px 2px 5px black;
+        border: none;
+        text-align: center;
+
+    }
+
+    .n_button {
+        color: #ffc107;
+        background-color: rgb(41, 43, 44, 0.2);
+        box-shadow: 2px 2px 10px rgb(15, 15, 15);
+        border-radius: 8px;
+
+    }
+
+    .n_button:hover {
+        background-color: #ffc107;
+    }
+
+
+    .a {
+        color: lightgrey;
+        text-decoration: none;
+        /* text-shadow: 2px 2px 7px black; */
+        font-size: 17px;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+    .card-link:hover {
+        background: rgb(41, 43, 44, 0.8);
+        text-decoration: none;
+    }
+
+    .card-news {
+        border-radius: 10px;
+        background: rgb(41, 43, 44, 0.7);
+        filter: alpha(opacity=50);
+        /* For IE8 and earlier */
+    }
+
+    .card-title1 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 20px;
+    }
+
+    .card-header {
+        margin-bottom: 0px;
+    }
+
+    /* Red border */
+    hr.new1 {
+        border-top: 1px solid rgb(54, 54, 54);
+    }
+
+
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .nav_item {
+        color: #ffc107;
+        text-decoration: none;
+    }
+
+    .nav-item:hover {
+        color: #ffc107;
+        text-decoration: none;
+
+    }
+
+    .dropdown:hover {
+        color: #ffc107;
+        text-decoration: none;
+    }
+
+    .dropdown-menu {
+        background-color: rgba(32, 32, 32, 02);
+        border: none;
+        color: black;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px black;
+    }
+
+    .dropdown-item {
+        background: transparent;
+        color: #b8b4b4;
+    }
+
+    .dropdown-item:hover {
+        background: rgb(51, 51, 51);
+        border-radius: 5px;
+        color: #ffc107;
+    }
+
+
+    @media screen and (min-width:992px) {
+
+
+        .dropdown {
+            display: none;
+        }
+    }
+
+
+    @media screen and (max-width:992px) {
+        .marquee {
+            display: none;
+        }
+
+        .links {
+            display: none;
+        }
+
+
+        .quote {
+            text-shadow: 2px 2px 7px black;
+            display: none;
+        }
+
+        .epiclogo {
+            display: none;
+        }
+    }
+
+* {
+    font-family: "Times New Roman", Times, serif;
+}
+
+
+.thead {
+    cursor: pointer;
+    font-size: 18px;
+    text-shadow: 3px 3px 8px #000000;
+    background: rgb(41, 43, 44, 0.9);
+}
+
+#thead2 {
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
+    text-shadow: 5px 5px 8px #000000;
+    background: rgb(41, 43, 44, 0.9);
+
+}
+
+.table {
+    border-spacing: 2px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px black;
+    text-shadow: 3px 3px 5px #000000;
+    border-radius: 10px;
+    background: rgb(41, 43, 44, 0.8);
+}
+
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+
+.card-title1 {
+    color: #E8E8E8;
+    text-shadow: 5px 5px 8px #000000;
+}
+
+
+.card-text {
+    text-shadow: 5px 5px 8px #000000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ .btn_ex {
+    box-shadow: 2px 2px 10px rgb(24, 24, 24);
+    font-size: 14px;
+    color: #e0c746;
+
+    padding: 5px;
+    text-shadow: 3px 3px 8px #000000;
+    background: rgb(41, 43, 44, 0.2);
+    border-radius: 7px;
+}
+
+.m_button {
+    color: #cbccc6;
+    background-color: rgb(41, 43, 44, 0.2);
+    box-shadow: 2px 2px 10px rgb(15, 15, 15);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.m_button:hover {
+    background-color: #ffc107;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 19px;
+    color: #e0c746;
+    text-shadow: 5px 5px 8px #000000;
+}
+
+/* .card-header {
+    font-size: 17px;
+    font-family: "Courier New", Courier, monospace;
+    color: #e0c746;
+    text-shadow: 5px 5px 8px #000000;
+} */
+
+
+
+.card {
+    box-shadow: 2px 2px 10px rgb(10, 10, 10);
+    background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.7) 99%);
+    border-radius: 10px;
+}
+
+/* .card:hover {
+    box-shadow: 2px 2px 10px rgb(10, 10, 10);
+    background: rgba(67, 68, 68, 0.9);
+    border-radius: 10px;
+} */
+
+.footer {
+    background: rgb(41, 43, 44, 0.8);
+    border-radius: 10px;
+}
+
+h2 {
+  color: f1f1f1;
+  text-shadow: 5px 10px 8px #000000;
+ }
+
+
+
+ @media screen and (max-width:600px) {
+    .dis {
+        display: none;
+        }
+
+}
+
+
+@media (min-width: 1100px) {
+    .container{
+        max-width: 1300px;
+    }
+}

@@ -8,7 +8,6 @@ def datex(value):
     new_value = value[0:10]+" "+value[11:16]
     return f"{new_value} UTC"
 
-
 def btc(value):
     return f"₿ {value:.8f}"
 

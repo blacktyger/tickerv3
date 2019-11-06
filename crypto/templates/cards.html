@@ -2,36 +2,7 @@
 
 <html>
 <style>
-    .card-link:hover {
-        background: rgb(41, 43, 44, 0.8);
-    }
 
-    .card-news {
-        border-radius: 10px;
-        background: rgb(41, 43, 44, 0.7);
-        filter: alpha(opacity=50);
-        /* For IE8 and earlier */
-    }
-
-    .card-title1 {
-        font-family: "Times New Roman", Times, serif;
-        font-size: 20px;
-    }
-
-    .card-header {
-        margin-bottom: 0px;
-    }
-
-    /* Red border */
-    hr.new1 {
-        border-top: 1px solid rgb(54, 54, 54);
-    }
-
-
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
-    }
 </style>
 
 
@@ -52,26 +23,47 @@
                             <div class="card-text text-white-50 font-weight-bold text-center pb-1 pt-1">
                                 USD(T):
                             </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">BTC:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">7D:
-                            </div>
                         </td>
                         <td>
                             <div class="card-text text-right pr-2">
                                 <span class="card-title1">{{ x.current_price|usd3}}</span>
                                 <small>{{ arrow_check_price24|safe}}</small>
                             </div>
+                        </td>
+                    </tr>
+
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">BTC:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2">
                                 {% for x in api_epic_btc %}{{ x.current_price|btc}}
                                 <small>{{ arrow_check_price24btc|safe}}{%endfor%}</small>
                             </div>
+                        </td>
+                    </tr>
+
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pt-1 pr-2">
                                 {{ x.price_change_percentage_24h_in_currency|procent}}
                                 <small>{{ arrow_check_price24|safe}}</small>
                             </div>
+                        </td>
+                    </tr>
+
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">7D:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2">
                                 {{ x.price_change_percentage_7d_in_currency|procent}}
                                 <small>{{ arrow_check_price7d|safe}}</small>
@@ -92,40 +84,59 @@
                 <table class="table1 w-100 ">
                     <tr class="align-items-center">
                         <td>
-                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-2 pb-1">
-                                TOTAL:</div>
-                            <div class="card-text text-white-50 font-weight-bold white-50d text-center pr-5 pt-1 pb-1">
-                                USD(T):
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1 pb-1">
-                                BTC:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1">
-                                CHANGE:
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-2 pb-1">EPICS:
                             </div>
                         </td>
                         <td>
-                            <div class="card-text text-right pt-1 pr-2 pb-1">
-                                <span class="card-title1">${{total_vol|cala|intspace}}</span>
+                            <div class="card-title1 text-right pt-1 pr-2 pb-1">
+                                <img style="height: 23px;" class="pb-1" src="{% static 'images/btn1.png' %}">
+                                {{ total_vol_epic|cala|intspace}}
+                                {% for k, v in api_ticker.market_data.items %}
+                                {% if k == 'circulating_supply' %}
+                                <span class="text-muted"><small>{{ v|vol_supply|procent}}</small></span>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold white-50d text-center pr-5 pt-1 pb-1">
+                                VALUE:
+                            </div>
+                        </td>
+                        <td>
+                            <div class="card-text text-right pr-2 pb-1">
+                                <span class="card-text">${{total_vol|cala|intspace}}</span>
                                 <span class="text-muted"><small>{{total_vol|usdtobtc|btc3}}</small></span>
                             </div>
-                            <div class="card-text text-right pr-2 pb-1">
-                                $ {{ total_vol_usd|cala|intspace }}
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1 pb-1">USD(T):
                             </div>
-                            <div class="card-text text-right pr-2 pt-1 pb-1">
-                                {{ total_vol_btc|btc3 }}
+                        </td>
+                        <td>
+                            <div class="card-text text-right pr-2 pt-1 pb-1">$ {{ total_vol_usd|cala|intspace }}
                             </div>
-
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pr-5 pt-1">BTC:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2">
-                                {{ check_vol|procent}}
-                                <small>{{ arrow_check_vol|safe}}</small>
+                                {{ total_vol_btc|btc3 }}
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <!-- START Card 2-->
+        <!-- END Card 2-->
 
         <!-- START Card 3-->
         <div class="col-lg-3 col-md-3 col-sm-6 px-1 pb-2">
@@ -139,29 +150,47 @@
                             <div class="card-text text-white-50 font-weight-bold text-center pt-2 pb-1">
                                 USD(T):
                             </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pb-1 pt-1">
-                                BTC:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1 ">
-                                DATE:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">
-                                CHANGE:</div>
                         </td>
                         <td>
                             <div class="card-text text-right pr-2 pt-1 pb-1">
                                 <span class="card-title1">{{ x.ath|usd3}}</span>
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pb-1 pt-1">
+                                BTC:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2 pb-0">
                                 {% for x in api_epic_btc %}{{ x.ath|btc}}{%endfor%}
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1 ">
+                                DATE:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pt-2 pr-2 pb-1">
                                 {{ x.ath_date|datex}}
                                 <small><span class="text-muted">{{ x.ath_date|last_trade}}</span></small>
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">
+                                CHANGE:</div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2">
                                 {{ x.ath_change_percentage|procent}}
-                                <small>{{ arrow_check_price7d|safe}}</small>
+                                <small>{{ arrow_check_ath|safe}}</small>
                             </div>
                         </td>
                     </tr>
@@ -176,36 +205,55 @@
                 <div class="card-news" style="background: rgba(112, 112, 112, 0.1);">
                     <div class="card-title text-center pt-1">Market Cap:</div>
                 </div>
+
                 <table class="table1 w-100 ">
                     <tr class="align-items-center">
                         <td>
                             <div class="card-text text-white-50 font-weight-bold text-center pt-2 pb-1">
                                 SUPPLY:
                             </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-0 pb-1">
-                                USD(T):
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1">
-                                BTC:
-                            </div>
-                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
-                            </div>
                         </td>
                         <td>
                             <div class="card-text text-right pr-2 pb-1 pt-2">
                                 {% for k, v in api_ticker.market_data.items %}
                                 {% if k == 'circulating_supply' %}
-                                {{ v|cala|intspace }} <img style="height: 20px;" class="pb-1"
-                                    src="{% static 'images/btn1.png' %}">
+                                <img style="height: 20px;" class="pb-1" src="{% static 'images/btn1.png' %}">
+                                {{ v|cala|intspace }}
                                 {% endif %}
                                 {% endfor %}
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-0 pb-1">
+                                USD(T):
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2 pb-1">
                                 $ {{ x.market_cap|cala|intspace }}
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-1 pb-1">
+                                BTC:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pt-1 pr-2 pb-1">
                                 {% for x in api_epic_btc %}{{ x.market_cap|btc3 }}{%endfor%}
                             </div>
+                        </td>
+                    </tr>
+                    <tr class="align-items-center">
+                        <td>
+                            <div class="card-text text-white-50 font-weight-bold text-center pt-2">24H:
+                            </div>
+                        </td>
+                        <td>
                             <div class="card-text text-right pr-2">
                                 {{ x.market_cap_change_percentage_24h|procent}}
                                 <small>{{ arrow_check_cap|safe}}</small>
@@ -219,36 +267,70 @@
         <!-- END Card 4-->
     </div>
     <!-- END ROW 1-->
-
     <!-- START ROW 2-->
+    <div class="row pb-2 pt-3 no-gutters d-flex justify-content-left">
+        <div class="col-lg-4 col-md-6 col-sm-10 px-1 pt-1" style="min-width: 385px;">
+            <div class="card card-link text-white h-100">
+                <div class="text-center">
+                    <a href="#epic-promo" data-toggle="modal" data-target="#epic-promo"><img class="img-fluid rounded"
+                            src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu"></a>
 
-    <div class="row pb-2 pt-3 no-gutters">
-        <!-- START Card 1-->
-        
-        <div class="card card-link text-white">
-            <div class="row py-2 d-flex flex-wrap align-items-center">
-                <div class="col-auto col-md-5 text-right" >
-                    <a href="{% url 'fastepic' %}">
-                    <img class="pr-2 pb-2 img-fluid" src="{% static 'images/fast.png' %}">
-                </a>
-                </div>
-                <div class="col-lg-6 col-md-6 text-left">
-                    <div class="px-4 py-2">
-                            <a href="{% url 'fastepic' %}" class="text-white-50">        
-                            <span style="font-size: 20px;">Make your first steps in to the <span class="text-white"><img
-                                    style="height: 23px;" class="ml-1 pb-1" src="{% static 'images/btn1.png' %}">
-                                Epic-Cash</span>
-                            world with fastepic.eu!</br> Create your first wallet, buy or sell your coins,
-                            send to and receive from anyone just by using email address. There is also pool for
-                            miners, ready to use straight away without configuration!
-                        </span></a>
-                   
-                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 col-md-6 col-sm-10 px-1 pt-1 " style="min-width: 385px;">
+            <div class="card card-link text-white h-100"
+                style="background-image: url('{% static 'images/fast-bg.png' %}');  background-position: center center;">
+                <a href="{% url 'fastepic' %}" style="text-decoration: none;">
+                    <div class="card-title1 text-center"><img class="card-img pt-2 mr-2"
+                            src="{% static 'images/t_fastepiclogo1.png' %}" alt="fastepic.eu">
+
+                        <div class="px-4 pb-2">
+                            <span style="font-size: 20px;"> Read more about <span
+                                    class="text-warning">fastepic.eu</span> and how to create your
+                                account within minutes.
+                            </span>
+                        </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <!-- END Card 1-->
+    </div>
+    <!-- END ROW 2-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="epic-promo" tabindex="-1" role="dialog" aria-labelledby="epic-promo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 10px; background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.9) 99%);">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <img class="img-fluid rounded shadow" src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu">
+                    <div class="text-center card-title1 px-2 py-2">
+                        Join our Epic community!<br>
+                        Ask for details at official
+                        <a href="https://t.me/EpicCash" class="text-light" style="font-size: 19px;" target="_blank"><i
+                                class="fab fa-telegram-plane text-info">
+                            </i> Telegram </a> or
+                        <a href="https://discordapp.com/invite/ZjnC6bh" class="text-light" style="font-size: 19px;"
+                            target="_blank">
+                            <i class="fab fa-discord text-info"></i> Discord</a>.<br>
+                        We will help you to create epic wallet and send your first <span class="text-warning"><img
+                                style="height: 20px;" class="ml-1 pb-1" src="{% static 'images/btn1.png' %}">
+                            Epic-Cash</span> right away!
+                        <a href="{% url 'fastepic' %}" target="_blank" style="font-size: 19px;" class="text-muted">
+                                More info...</a>
+                </div>
+            </div>
+            <button type="button" class="btn m_button mt-2" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+    <!-- End MODAL -->
+
+
+
 </body>
 
 </html>
@@ -267,24 +349,31 @@
     </div>
 </a> -->
 
-<!-- <div class="col-lg-6 col-md-6 col-sm-12 px-1 pt-1">
-        <a href="{% url 'fastepic' %}">
-            <div class="card card-link text-white h-100 pb-0">
-                <div class="card-title1 text-center"><img class="card-img pt-2 mr-2 w-75"
-                        src="{% static 'images/t_fastepiclogo1.png' %}" alt="fastepic.eu">
-                    <hr>
-                    <div class="px-4 pb-3">
-                        <span style="font-size: 20px;"> Make your first steps in to the <span
-                                class="text-white"><img style="height: 23px;" class="ml-1 pb-1"
-                                    src="{% static 'images/btn1.png' %}"> Epic-Cash </span>
-                            world with <a class="text-warning" style="font-size: 20px;" href="https://fastepic.eu"
-                                target="_blank">fastepic.eu</a>! Create your first wallet, buy or sell your coins,
-                            send to and receive from anyone just by using email address. There is also pool for
-                            miners,
-                            ready to use straight away without configuration!
-                            <br><small><span class="text-muted">Read more...</span></small>
-                        </span>
+<!--  -->
+
+
+
+<!-- 
+            <div class="card card-link text-white">
+                <div class="row py-2 d-flex flex-wrap align-items-center">
+                    <div class="col-auto col-md-5 text-right" >
+                        <a href="{% url 'fastepic' %}">
+                        <img class="pr-2 pb-2 img-fluid" src="{% static 'images/fast.png' %}">
+                    </a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 text-left">
+                        <div class="px-4 py-2">
+                                <a href="{% url 'fastepic' %}" class="text-white-50">        
+                                <span style="font-size: 20px;">Make your first steps in to the <span class="text-white"><img
+                                        style="height: 23px;" class="ml-1 pb-1" src="{% static 'images/btn1.png' %}">
+                                    Epic-Cash</span>
+                                world with fastepic.eu!</br> Create your first wallet, buy or sell your coins,
+                                send to and receive from anyone just by using email address. There is also pool for
+                                miners, ready to use straight away without configuration!
+                            </span></a>
+                       
+                        </div>
                     </div>
                 </div>
-            </div> -->
-</a>
+            </div>
+        </div> -->

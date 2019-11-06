@@ -13,6 +13,19 @@ def home(request):
     now = datetime.datetime.now() + datetime.timedelta(seconds=60 * 3.4)
     date = datetime.datetime.now()
 
+    @register.filter(name='vol_supply')
+    def vol_supply(value):
+        for vol in api_ticker['tickers']:
+            if vol['market']['identifier'] == "citex" and vol['target'] == 'USDT':
+                vol1 = vol['volume']
+        for vol in api_ticker['tickers']:
+            if vol['market']['identifier'] == "bihodl" and vol['target'] == 'USDT':
+                vol2 = vol['volume']
+        vol_total = vol1 + vol2
+        epic_vol = vol_total
+        percent = (epic_vol/float(value))*100
+        return float(percent)
+
     @register.filter('last_trade')
     def last_trade(value):
         value = str(value)
@@ -46,10 +59,8 @@ def home(request):
         for s in api_fast['stocks']:
             bid = s['pricebid']
             ask = s['priceask']
-
             spread = ask - bid
             percent = (spread / ask) * 100
-
             return percent
 
     @register.filter('btctousd')
@@ -109,7 +120,6 @@ def home(request):
     def arrow_check_vol():
         for x in api_vol_usd['total_volumes'][0]:
            day_ago = x
-
         for x in api_epic_usd:
             now = x['total_volume']
         if day_ago > now:
@@ -117,18 +127,14 @@ def home(request):
         else:
             return '<i class="material-icons text-success">call_made</i>'
 
-
     def check_vol():
         for x in api_vol_usd['total_volumes'][0]:
            day_ago = x
-
         for x in api_epic_usd:
             now = x['total_volume']
-        
         diff = now - day_ago
-        procent = (diff / now) * 100
+        procent = (now/diff) * 100
         return procent
-
 
     def arrow_check_ath():
         for x in api_epic_usd:
@@ -137,23 +143,15 @@ def home(request):
             else:
                 return '<i class="material-icons text-success">call_made</i>'
 
-
-
     def avg_price_usd():
         for x in api_ticker['tickers']:
             if x['target'] == "BTC":
                 price_btc = btc_price(x['last'])
             if x['target'] == "USDT":
                 price_usd = x['last']
-
-        # for s in api_fast['stocks']:
-        #     stock_price = s['lastprice']
-        #     sotck_usd_price = btc_price(stock_price)
-
         return (price_btc + price_usd)/3
 
     def total_vol_usd():
-
         for vol in api_ticker['tickers']:
             if vol['market']['identifier'] == "citex" and vol['target'] == 'USDT':
                 vol1 = vol['converted_volume']['usd']
@@ -163,9 +161,17 @@ def home(request):
         vol_total = vol1 + vol2
         return vol_total
 
+    def total_vol_epic():
+        for vol in api_ticker['tickers']:
+            if vol['market']['identifier'] == "citex" and vol['target'] == 'USDT':
+                vol1 = vol['volume']
+        for vol in api_ticker['tickers']:
+            if vol['market']['identifier'] == "bihodl" and vol['target'] == 'USDT':
+                vol2 = vol['volume']
+        vol_total = vol1 + vol2
+        return vol_total
 
     def total_vol_btc():
-
         for vol in api_ticker['tickers']:
             if vol['market']['identifier'] == "citex" and vol['target'] == 'BTC':
                 vol1 = vol['converted_volume']['btc']
@@ -177,12 +183,7 @@ def home(request):
     def total_vol():
         usd = total_vol_usd()
         btc = btc_price(total_vol_btc())
-
         return usd + btc
-
-
-
-
 
 
     ctx = {
@@ -205,6 +206,7 @@ def home(request):
         'avg_price_usd': avg_price_usd(),
         'total_vol_usd': total_vol_usd(),
         'total_vol_btc': total_vol_btc(),
+        'total_vol_epic':total_vol_epic(),
         'total_vol': total_vol(),
         'check_vol': check_vol(),
 

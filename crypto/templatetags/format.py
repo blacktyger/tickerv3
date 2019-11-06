@@ -1,6 +1,7 @@
 from django import template
 from django.template.defaulttags import register
 import pytz
+from crypto.views import home
 
 @register.filter(name='format')
 def format(value, fmt):
