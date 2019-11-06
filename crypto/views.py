@@ -221,6 +221,8 @@ def home(request):
         'table1': 'table1.html',
         'cards': 'cards.html',
         'left_nav': 'left_nav.html',
+
+        'title': 'Home',
     }
 
     return render(request, 'home.html', ctx)
@@ -234,6 +236,7 @@ def fastepic(request):
         'table1': 'table1.html',
         'cards': 'cards.html',
         'left_nav': 'left_nav.html',
+        'title': 'fastepic.eu',
     }
 
     return render(request, 'fastepic.html', ctx)
