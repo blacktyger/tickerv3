@@ -8,7 +8,7 @@
         padding-bottom: 20px;
     }
 
-    .epicnavbar {
+.epicnavbar {
         font-family: Georgia, serif;
         background-color: rgb(41, 43, 44, 0.5);
         box-shadow: 2px 1px 10px rgb(15, 15, 15);
@@ -18,7 +18,7 @@
         /* padding: 15px 15px; */
     }
 
-    .marquee {
+.marquee {
         color: azure;
         background-color: transparent;
         padding-left: 35px;
@@ -120,16 +120,6 @@
         border-radius: 5px;
         color: #ffc107;
     }
-
-
-    @media screen and (min-width:992px) {
-
-
-        .dropdown {
-            display: none;
-        }
-    }
-
 
     @media screen and (max-width:992px) {
         .marquee {

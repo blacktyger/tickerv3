@@ -5,8 +5,6 @@ from django.conf.urls import url
 urlpatterns = [
     path('', views.home, name="home"),
     path('fastepic/', views.fastepic, name="fastepic"),
-    path('exchanges/', views.exchanges, name="exchanges"),
-
 ]
 
 

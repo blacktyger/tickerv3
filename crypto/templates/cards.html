@@ -1,117 +1,142 @@
 {% load static %} {% load format %} {% load humanize %}
 
 <html>
+<div class="col-lg-12 w-100">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 px-1 py-1">
+            <div class="text-white h-100">
+                <!--Carousel Wrapper-->
+                <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+                    <!--Indicators-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                    </ol>
+                    <!--/.Indicators-->
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox"
+                        style="border-radius: 15px; box-shadow: 3px 3px 10px black;">
+                        <div class="carousel-item active">
+                            <div class="view">
+                                <img class="d-block w-100 crisp-edges" src="{% static 'images/price-oil.png' %} "
+                                    alt="First slide">
+                                <div class="mask rgba-black-strong"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <h3 class="h4 price-epic text-right">Petrol 1L <span
+                                        class="text-warning">{{1.66|usdtoepic|safe}} </span></h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <!--Mask color-->
+                            <div class="view">
+                                <img class="d-block w-100 crisp-edges" src="{% static 'images/price-beer.png' %}"
+                                    alt="Second slide">
+                                <div class="mask rgba-black-strong"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <h3 class="h4 price-epic text-right">Beer 0,5L <span
+                                        class="text-warning">{{4.5|usdtoepic|safe}} </span></h3>
 
-<div class="col-lg-6 col-md-12 col-sm-12 px-1 py-1">
-    <div class="text-white h-100">
-        <!--Carousel Wrapper-->
-        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-2" data-slide-to="1"></li>
-                <li data-target="#carousel-example-2" data-slide-to="2"></li>
-            </ol>
-            <!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox" style="border-radius: 15px; box-shadow: 3px 3px 10px black;">
-                <div class="carousel-item active">
-                    <div class="view">
-                        <img class="d-block w-100 crisp-edges" src="{% static 'images/price-oil.png' %} "
-                            alt="First slide">
-                        <div class="mask rgba-black-strong"></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <!--Mask color-->
+                            <div class="view">
+                                <img class="d-block w-100 auto" src="{% static 'images/price-bigmac.png' %}"
+                                    alt="Third slide">
+                                <div class="mask rgba-black-slight"></div>
+                            </div>
+                            <div class="carousel-caption">
+                                <h3 class="h4 price-epic text-right">BigMac USA <span
+                                        class="text-warning">{{4|usdtoepic|safe}} </span></h3>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="carousel-caption">
-                        <h3 class="h4 price-epic text-right" >Petrol 1L <span class="text-warning">{{1.66|usdtoepic|safe}} </span></h3>
-                    </div>
+                    <!--/.Slides-->
+                    <!--Controls-->
+                    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon ml-0" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--/.Controls-->
                 </div>
-                <div class="carousel-item">
-                    <!--Mask color-->
-                    <div class="view">
-                        <img class="d-block w-100 crisp-edges" src="{% static 'images/price-beer.png' %}"
-                            alt="Second slide">
-                        <div class="mask rgba-black-strong"></div>
-                    </div>
-                    <div class="carousel-caption">
-                            <h3 class="h4 price-epic text-right">Beer 0,5L <span class="text-warning">{{4.5|usdtoepic|safe}} </span></h3>
+                <!--/.Carousel Wrapper-->
+            </div>
+        </div>
 
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <!--Mask color-->
-                    <div class="view">
-                        <img class="d-block w-100 auto" src="{% static 'images/price-bigmac.png' %}" alt="Third slide">
-                        <div class="mask rgba-black-slight"></div>
-                    </div>
-                    <div class="carousel-caption">
-                            <h3 class="h4 price-epic text-right">BigMac USA <span class="text-warning">{{4|usdtoepic|safe}} </span></h3>
+        <div class="col-lg-6 col-md-12 col-sm-12 px-1 py-1">
+            <div class="card-link text-white h-100 pt-1">
+                <a href="#epic-promo" data-toggle="modal" data-target="#epic-promo">
+                    <img class="img-fluid" style="border-radius: 15px; box-shadow: 3px 3px 10px black;"
+                        src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu"></a>
+            </div>
+        </div>
 
+        <!-- ***************************** -->
+        <div class="col-lg-12 col-md-12 col-sm-12 px-1 py-3">
+            <div class="card-link text-white h-100">
+                <a href="{% url 'fastepic' %}">
+                    <div class="col pb-1 pt-1"
+                        style="border-top-left-radius: 17px; border-radius: 17px; background:  rgb(41, 41, 41, 1);">
+                        <div class="h5 px-3 text-center text-white-50 ">fastepic.eu best place
+                            to start with
+                            <img style="height: 26px;" class="pb-1" src="{% static 'images/btn1.png' %}"><span
+                                class="text-warning"> Epic
+                                Cash!</span></div>
+
+                    
+                    <img class="img-fluid crisp-edges" style="border-radius: 15px; box-shadow: 3px 3px 10px black;"
+                        src="{% static 'images/fast-large.png' %}" alt="fastepic.eu">
+                    <div class="row justify-content-center">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- END ROW 2-->
+
+            <!-- Modal -->
+            <div class="modal fade" id="epic-promo" tabindex="-1" role="dialog" aria-labelledby="epic-promo"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content"
+                        style="border-radius: 10px; background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.9) 99%);">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <img class="img-fluid rounded shadow" src="{% static 'images/epic-promo1.png' %}"
+                                alt="fastepic.eu">
+                            <div class="text-center card-title1 px-2 py-2">
+                                Join our Epic community!<br>
+                                Ask for details at official
+                                <a href="https://t.me/EpicCash" class="text-light" style="font-size: 19px;"
+                                    target="_blank"><i class="fab fa-telegram-plane text-info">
+                                    </i> Telegram </a> or
+                                <a href="https://discordapp.com/invite/ZjnC6bh" class="text-light"
+                                    style="font-size: 19px;" target="_blank">
+                                    <i class="fab fa-discord text-info"></i> Discord</a>.<br>
+                                We will help you to create epic wallet and send your first <span
+                                    class="text-warning"><img style="height: 20px;" class="ml-1 pb-1"
+                                        src="{% static 'images/btn1.png' %}">
+                                    Epic-Cash</span> right away!
+                                <a href="{% url 'fastepic' %}" target="_blank" style="font-size: 19px;"
+                                    class="text-muted">
+                                    More info...</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn m_button mt-2" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon ml-0" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--/.Controls-->
-        </div>
-        <!--/.Carousel Wrapper-->
-    </div>
-</div>
-
-<div class="col-lg-6 col-md-12 col-sm-12 px-1 py-1">
-    <div class="card-link text-white h-100 pt-1">
-        <a href="#epic-promo" data-toggle="modal" data-target="#epic-promo">
-            <img class="img-fluid" style="border-radius: 15px; box-shadow: 3px 3px 10px black;"
-                src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu"></a>
-    </div>
-</div>
-
-<!-- ***************************** -->
-<div class="col-lg-12 col-md-12 col-sm-12 px-1 py-3">
-    <div class="card-link text-white h-100">
-        <a href="{% url 'fastepic' %}">
-            <img class="img-fluid crisp-edges" style="border-radius: 15px; box-shadow: 3px 3px 10px black;"
-                src="{% static 'images/fast-large.png' %}" alt="fastepic.eu"></a>
-    </div>
-
-    <!-- END ROW 2-->
-
-    <!-- Modal -->
-    <div class="modal fade" id="epic-promo" tabindex="-1" role="dialog" aria-labelledby="epic-promo" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content"
-                style="border-radius: 10px; background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.9) 99%);">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <img class="img-fluid rounded shadow" src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu">
-                    <div class="text-center card-title1 px-2 py-2">
-                        Join our Epic community!<br>
-                        Ask for details at official
-                        <a href="https://t.me/EpicCash" class="text-light" style="font-size: 19px;" target="_blank"><i
-                                class="fab fa-telegram-plane text-info">
-                            </i> Telegram </a> or
-                        <a href="https://discordapp.com/invite/ZjnC6bh" class="text-light" style="font-size: 19px;"
-                            target="_blank">
-                            <i class="fab fa-discord text-info"></i> Discord</a>.<br>
-                        We will help you to create epic wallet and send your first <span class="text-warning"><img
-                                style="height: 20px;" class="ml-1 pb-1" src="{% static 'images/btn1.png' %}">
-                            Epic-Cash</span> right away!
-                        <a href="{% url 'fastepic' %}" target="_blank" style="font-size: 19px;" class="text-muted">
-                            More info...</a>
-                    </div>
-                </div>
-                <button type="button" class="btn m_button mt-2" data-dismiss="modal">Close</button>
-            </div>
+            <!-- End MODAL -->
         </div>
     </div>
-    <!-- End MODAL -->
 </div>

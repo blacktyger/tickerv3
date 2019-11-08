@@ -1,218 +1,95 @@
 {% load static %}
 
-<head>
-
-
-
-</head>
-<style>
-    .logo {
-        padding-left: 5px;
-        padding-bottom: 20px;
-    }
-
-    .epicnavbar {
-        font-family: Georgia, serif;
-        background-color: rgb(41, 43, 44, 0.5);
-        box-shadow: 2px 1px 10px rgb(15, 15, 15);
-        /* text-shadow: 2px 2px 5px black; */
-        border-right: none;
-
-        /* padding: 15px 15px; */
-    }
-
-    .marquee {
-        color: azure;
-        background-color: transparent;
-        padding-left: 35px;
-        text-shadow: 2px 2px 5px black;
-        border: none;
-        text-align: center;
-
-    }
-
-    .n_button {
-        color: #ffc107;
-        background-color: rgb(41, 43, 44, 0.2);
-        box-shadow: 2px 2px 10px rgb(15, 15, 15);
-        border-radius: 8px;
-
-    }
-
-    .n_button:hover {
-        background-color: #ffc107;
-    }
-
-
-    a {
-        color: lightgrey;
-        text-decoration: none;
-        /* text-shadow: 2px 2px 7px black; */
-        font-size: 17px;
-    }
-
-    .nav_item {
-        color: #ffc107;
-        text-decoration: none;
-    }
-
-    .nav-item:hover {
-        color: #ffc107;
-        text-decoration: none;
-
-    }
-
-    .dropdown:hover {
-        color: #ffc107;
-        text-decoration: none;
-    }
-
-    .dropdown-menu {
-        background-color: rgba(32, 32, 32, 02);
-        border: none;
-        color: black;
-        border-radius: 10px;
-        box-shadow: 2px 2px 10px black;
-    }
-
-    .dropdown-item {
-        background: transparent;
-        color: #b8b4b4;
-    }
-
-    .dropdown-item:hover {
-        background: rgb(51, 51, 51);
-        border-radius: 5px;
-        color: #ffc107;
-    }
-
-
-    @media screen and (min-width:992px) {
-
-
-        .dropdown {
-            display: none;
-        }
-    }
-
-
-    @media screen and (max-width:992px) {
-        .marquee {
-            display: none;
-        }
-
-        .links {
-            display: none;
-        }
-
-
-        .quote {
-            text-shadow: 2px 2px 7px black;
-            display: none;
-        }
-
-        .epiclogo {
-            display: none;
-        }
-    }
-</style>
-
 <body>
     <div class="container-fluid ">
         <div class="row">
-            <div class="col-lg-5 logo pt-4 px-4">
+            <div class="col-lg-5 col-md-4 logo pt-4 px-4">
                 <a href="{% url 'home' %}"><img class="img-fluid" src="{% static 'images/logo2.png' %}"></a>
             </div>
             <div class="quote col-lg-6">
                 <blockquote class="blockquote text-shadow text-right text-light">
                     <p class="pt-4 pb-3">
                         ...TAINTED COINS ARE DESTRUCTIVE - IF YOU BREAK FUNGIBILITY AND PRIVACY, <br>YOU BREAK THE
-                        CURRENCY...
-                    </p>
+                        CURRENCY...</p>
                     <footer class="blockquote-footer text-warning"> ANDREAS ANTONOPOULOS </footer>
                 </blockquote>
             </div>
-
         </div>
-    </div>
+        <!-- Navbar -->
+        <div class="row epicnavbar justify-content-left">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 mt-1 py-2 ">
+                <a style="display:inline-block;" href="{% url 'home' %}"
+                    class="btn  px-3 btn-block btn-sm m_button mb-1">
+                    <i class="fas fa-home"></i> Home</a>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col epicnavbar">
-                <div class="col">
-                    <nav class="navbar navbar-dark float-left">
-
-                            
-                        </a>
-                        <div class="dropdown pr-2 py-1">
-                            <button type="button" class="btn btn-block n_button py-1 pr-2" id="epic"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    style="height: 25px;" src="{% static 'images/btn.png' %}"> Epic-Tech</button></a>
-                            <div class="dropdown-menu px-2" aria-labelledby="epic">
-                                <a href="https://epic.tech/" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><img style="height: 20px;"
-                                            src="{% static 'images/btn1.png' %}">
-                                        Epic-Tech</button></a>
-                                <a href="https://explorer.epic.tech/" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fas fa-th-large text-info"></i>
-                                        Explorer</button></a>
-                                <a href="https://epic.tech/whitepaper/" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fas fa-file text-info"></i>
-                                        White Paper</button></a>
-                                <a href="https://gitlab.com/epiccash" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-gitlab text-info"></i>
-                                        GitLab</button></a>
-                                <a href="https://epic.tech/guidestutorials/" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="far fa-question-circle text-info"></i>
-                                        Guides</button></a>
-                            </div>
-                        </div>
-                        <div class="dropdown px-2 py-1">
-                            <a class="dropdown" href="#1" id="tele" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <button type="button" class="btn btn-block n_button py-1 px-2 "><i
-                                        class="fas fa-users"></i>
-                                    Social Media</button></a>
-                            <div class="dropdown-menu pl-3 py-2 px-2" aria-labelledby="tele">
-                                <a href="https://medium.com/epic-cash" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-medium-m text-info"></i>
-                                        Medium</button></a>
-                                <a href="https://twitter.com/EpicCashTech" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-twitter text-info"></i>
-                                        Twitter</button></a>
-                                <a href="https://www.reddit.com/r/epiccash/" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-reddit-alien text-info"></i>
-                                        Reddit</button></a>
-                                <a href="https://www.instagram.com/explore/tags/epiccash/" target="_blank"><button
-                                        type="button" class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-instagram text-info"></i> Instagram</button></a>
-                                <a href="https://t.me/EpicCash" target="_blank"><button type="button"
-                                        class="btn btn-block btn-sm m_button mb-1 "><i
-                                            class="fab fa-telegram-plane text-info"></i> Telegram</button></a>
-                                <a href="https://discordapp.com/invite/ZjnC6bh" target="_blank"
-                                    class="btn btn-block btn-sm m_button mb-1">
-                                    <i class="fab fa-discord text-info"> </i> Discord</a>
-                            </div>
-                        </div>
-                </div>
             </div>
-            <!-- <div class="col px-2 py-1" style="border-color: transparent;">
-                    <coingecko-coin-price-marquee-widget  coin-ids="bitcoin,beam,grin,epic-cash" currency="usd"
-                        background-color="transparent"  locale="en">
-                    </coingecko-coin-price-marquee-widget>
-                </div> -->
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 mt-1 py-2 ">
+                <a style="display:inline-block;" href="{% url 'fastepic' %}"
+                    class="btn px-3 btn-block btn-sm m_button mb-1">
+                    <img style="height: 23px;" class="pb-1" src="{% static 'images/epiclogo.png' %}"> fastepic</a>
+            </div>
+            <div class="col-lg-3 col-md-auto col-sm-auto col-xs-auto"></div>
+            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-6 ">
+                <nav class="navbar navbar-dark justify-content-around">
+                    <div class="dropdown pr-1 py-1">
+                        <button type="button" class="btn btn-block n_button  py-1 pr-2" id="epic" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><img style="height: 25px;"
+                                src="{% static 'images/btn.png' %}"> Epic-Tech</button></a>
+                        <div class="dropdown-menu px-2" aria-labelledby="epic">
+                            <a href="https://epic.tech/" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><img style="height: 20px;"
+                                        src="{% static 'images/btn1.png' %}">
+                                    Epic-Tech</button></a>
+                            <a href="https://explorer.epic.tech/" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="fas fa-th-large text-info"></i>
+                                    Explorer</button></a>
+                            <a href="https://epic.tech/whitepaper/" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i class="fas fa-file text-info"></i>
+                                    White Paper</button></a>
+                            <a href="https://gitlab.com/epiccash" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i class="fab fa-gitlab text-info"></i>
+                                    GitLab</button></a>
+                            <a href="https://epic.tech/guidestutorials/" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="far fa-question-circle text-info"></i>
+                                    Guides</button></a>
+                        </div>
+                    </div>
+                    <div class="dropdown px-1 py-1">
+                        <a class="dropdown" href="#1" id="tele" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <button type="button" class="btn btn-block n_button py-1 px-2 "><i class="fas fa-users"></i>
+                                Social Media</button></a>
+                        <div class="dropdown-menu pl-3 py-2 px-2" aria-labelledby="tele">
+                            <a href="https://medium.com/epic-cash" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="fab fa-medium-m text-info"></i>
+                                    Medium</button></a>
+                            <a href="https://twitter.com/EpicCashTech" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i class="fab fa-twitter text-info"></i>
+                                    Twitter</button></a>
+                            <a href="https://www.reddit.com/r/epiccash/" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="fab fa-reddit-alien text-info"></i>
+                                    Reddit</button></a>
+                            <a href="https://www.instagram.com/explore/tags/epiccash/" target="_blank"><button
+                                    type="button" class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="fab fa-instagram text-info"></i> Instagram</button></a>
+                            <a href="https://t.me/EpicCash" target="_blank"><button type="button"
+                                    class="btn btn-block btn-sm m_button mb-1 "><i
+                                        class="fab fa-telegram-plane text-info"></i> Telegram</button></a>
+                            <a href="https://discordapp.com/invite/ZjnC6bh" target="_blank"
+                                class="btn btn-block btn-sm m_button mb-1">
+                                <i class="fab fa-discord text-info"> </i> Discord</a>
+                        </div>
+                    </div>
+            </div>
         </div>
-        </nav>
     </div>
     </div>
-
+    </nav>
+    </div>
 </body>
 
 </html>
