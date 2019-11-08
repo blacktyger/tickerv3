@@ -1,0 +1,58 @@
+{% load static %} {% load format %} {% load humanize %}
+
+<script>
+    $(document).ready(function () {
+        $('#market').DataTable({
+            "searching": false,
+            "paging": false,
+            "info": false
+        });
+    });
+
+</script>
+
+<div class="col-lg-12">
+    <div class="card" style="background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.7) 99%);">
+        <a href="{% url 'exchanges' %}"><button type="button"
+                class="btn btn-block btn-sm m_button py-2 ">Exchanges</button></a>
+    </div>
+    <table id="market" style="overflow: hidden; font-size: 18px;" class="table mt-2 w-100 table-hover table-dark">
+        <thead id="thead2" class="thead">
+            <tr class="card-title text-center">
+                <th scope="col">Pair <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">Price <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">24h <small><i class="fas fa-sort"></i></small></th>
+                <th scope="col">7 Days <small><i class="fas fa-sort"></i></small></th>
+                <th class="dis" scope="col">24h High <small><i class="fas fa-sort"></i></small></th>
+                <th class="dis" scope="col">24h Low <small><i class="fas fa-sort"></i></small></th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr class="align-baseline">{% for x in api_epic_usd %}
+                <td>USD(T)</td>
+                <td>{{ x.current_price|usd3 }} </td>
+                <td>{{ x.price_change_percentage_24h_in_currency|procent }}
+                    {{ arrow_check_price24|safe }}
+                </td>
+                <td>{{ x.price_change_percentage_7d_in_currency|procent }}
+                    {{ arrow_check_price7d|safe }}
+                </td>
+                <td class="dis">{{ x.high_24h|usd3 }}</td>
+                <td class="dis">{{ x.low_24h|usd3 }}</td>
+            </tr>{% endfor %}
+
+            <tr>{% for x in api_epic_btc %}
+                <td>Bitcoin</td>
+                <td>{{ x.current_price|btc }}</td>
+                <td>{{ x.price_change_percentage_24h_in_currency|procent }}
+                    {{ arrow_check_price24btc|safe }}</td>
+                <td>{{ x.price_change_percentage_7d_in_currency|procent }}
+                    {{ arrow_check_price7dbtc|safe }}
+                </td>
+                <td class="dis">{{ x.high_24h|btc }}</td>
+                <td class="dis">{{ x.low_24h|btc }}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+
+</div>

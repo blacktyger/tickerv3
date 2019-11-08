@@ -3,10 +3,6 @@
     background-color: rgb(41, 43, 44, 0.9);
 }
 
-.card-link:hover {
-    opacity: 0.9;
-}
-
 .logo {
         padding-left: 5px;
         padding-bottom: 20px;
@@ -57,9 +53,15 @@
         color: white;
     }
 
+    .card-link {
+        background: transparent;
+        border-radius: 15px;
+    }
+
     .card-link:hover {
-        background: rgb(41, 43, 44, 0.8);
         text-decoration: none;
+        opacity: 0.9;
+        
     }
 
     .card-news {
@@ -72,10 +74,6 @@
     .card-title1 {
         font-family: "Times New Roman", Times, serif;
         font-size: 20px;
-    }
-
-    .card-header {
-        margin-bottom: 0px;
     }
 
     /* Red border */
@@ -242,6 +240,23 @@ a:hover {
     text-shadow: 5px 5px 8px #000000;
 } */
 
+.auto {
+    image-rendering: auto;
+}
+
+.pixelated {
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: pixelated;
+}
+
+.crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+.price-epic {
+    background: rgba(28,28,28,0.7); 
+    border-radius: 8px;
+}
 
 
 .card {
@@ -268,7 +283,7 @@ h2 {
 
 
 
- @media screen and (max-width:600px) {
+ @media screen and (max-width:1170px) {
     .dis {
         display: none;
         }
@@ -276,8 +291,3 @@ h2 {
 }
 
 
-@media (min-width: 1100px) {
-    .container{
-        max-width: 1300px;
-    }
-}

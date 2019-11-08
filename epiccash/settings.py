@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.redirects',
     'crypto',
+   
+    
+    
 ]
 
 SITE_ID = 1
@@ -115,6 +118,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+MEDIA_ROOT = '/static/images/'
+MEDIA_URL = '/media/'
 
 
 STATIC_URL = '/static/'

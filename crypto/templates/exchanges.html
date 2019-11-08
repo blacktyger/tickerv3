@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %} {% load format %} {% load humanize %} {% load tz %}
+
+<head>
+    <title>Epic Cash Center</title>
+
+    {% if title %}
+    <title>Epic Cash Center - {{ title }}</title>
+    {% else %}
+    <title>Epic Cash Center</title>
+    {% endif %}
+</head>
+
+<body>
+     {% block content %}
+     {% include navbar %}
+        
+    <div class="container-fluid mt-4">
+        <div class="row pr-4 justify-content-center">
+
+            <!-- LEFT NAVBAR-->
+            <div class="col-xl-2 col-lg-auto column-left pr-3 pt-3">
+                {% include left_nav %}
+            </div>
+            <!-- END LEFT NAVBAR-->
+
+            <!-- MAIN COLUMN-->
+            <div class="col-xl-7 col-lg-6 col-md-8 col-sm-10  column-main pt-3">
+                <div class="row px-2 "> {% include table_ex %}</div>
+               
+            </div>
+            <!-- END MAIN COLUMN-->
+
+            <!-- RIGHT COLUMN-->
+            <div class="col-lg-auto col-md-3 sm-order-first mt-3 ml-3 ">
+                {% include right_nav %}
+            </div>
+            <!-- END RIGHT COLUMN-->
+
+        </div>
+    </div>
+
+    {% include footer %}
+    {% endblock %}
+
+</body>
+
