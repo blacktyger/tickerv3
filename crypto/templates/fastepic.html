@@ -2,7 +2,7 @@
 {% load static %} {% load format %} {% load humanize %} {% load tz %}
 
 <head>
-    <title>Epic Cash Center</title>
+    
 
     {% if title %}
     <title>Epic Cash Center - {{ title }}</title>
@@ -12,177 +12,35 @@
 </head>
 
 <body>
-
-
-    {% block content %}
-    {% include navbar %}
-
-
+     {% block content %}
+     {% include navbar %}
+        
     <div class="container-fluid mt-4">
-        <!-- Start LEFT LINKS -->
-        <div class="row flex-md-row py-2">
-            {% include left_nav %}
-            <!-- End row LEFT LINKS -->
+        <div class="row pr-4 justify-content-center">
 
-            <!-- Start row with MAIN CARDS -->
-            <div class="col-lg-auto col-md-auto col-sm-12" style="max-width: 870px;">
-                <div class="card text-white h-100 pb-0"
-                    style="background: linear-gradient(350deg, rgba(28,28,28,1) 0%, rgb(49, 49, 49, 0.9) 99%);">
-                    <div class="card-header text-center"
-                        style="background-image: url('{% static 'images/fast-bg-big.png' %}'); background-position: center;">
-                        <img class="card-img pt-2 mr-2 pb-3 w-75" src="{% static 'images/t_fastepiclogo1.png' %}"
-                            alt="fastepic.eu">
-                    </div>
-                    <div class="row px-3 pt-3">
-                        <div class="col">
-                            <a href="https://fastepic.eu/" target="_blank"><button type="button"
-                                    class="btn btn-block btn-sm m_button mb-1" style="font-size: 19px;">
-                                    fastepic.eu</button></a></div>
-                        <div class="col">
-                            <a href="https://fastepic.eu/pool" target="_blank"><button type="button"
-                                    class="btn btn-block btn-sm m_button mb-1" style="font-size: 19px;">
-                                    Pool for Miners</button></a></div>
-                        <div class="col">
-                            <a href="https://epic-ticker.tech/stock/" target="_blank"><button type="button"
-                                    class="btn btn-block btn-sm m_button mb-1" style="font-size: 19px;">
-                                    Home Epic Exchange</button></a></div>
-                    </div>
-                    <hr>
-                    <div class="text-white h-100 px-5 pt-1 pb-3">
-                        <div class=" card-title text-center">
-                            <h2>What is fastepic.eu</h2>
-                        </div>
-                        <div class="text-white-50 text-left" style="font-size: 19px;">
-                            It's place when everyone can start using <span class="text-light"><img style="height: 20px;"
-                                    class="ml-1 pb-1" src="{% static 'images/btn1.png' %}"> Epic-Cash</span> just with
-                            an email address. Thanks to unique characteristics of MimbleWimble protocol,
-                            you can trade Epics without giving anyone your personal data.
-                            With <a class="text-warning" style="font-size: 19px;" href="https://fastepic.eu"
-                                target="_blank">fastepic.eu</a> you can:
-                            <div class="ml-3 text-warning pt-4 pb-1" style="font-size: 19px;">
-                                <span class="text-white">
-                                    <li>Store Epics secure on your online wallet</li>
-                                </span>
-                                <span class="text-white-50">
-                                    <li>Send coins to anyone in many different ways</li>
-                                </span>
-                                <span class="text-white">
-                                    <li>Receive coins from anyone and anywhere </li>
-                                </span>
-                                <span class="text-white-50">
-                                    <li>Buy things for Epics without any 3rd party</li>
-                                </span>
-                                <span class="text-white">
-                                    <li>Buy or sell coins for Bitcoin with integrated exchange</li>
-                                </span>
-                                <span class="text-white-50">
-                                    <li>Mine Epic with your hardware without any configurations </li>
-                                </span>
-                            </div>
-                            <hr>
-                    
-                            <div class="text-center pb-2">
-                                <img class="img-fluid w-75" style="border-radius: 15px; box-shadow: 5px 5px 10px rgb(29, 29, 29);"
-                                    src="{% static 'images/epic-promo1.png' %}" alt="fastepic.eu">
-                            </div>
-
-                            <div class="pt-1 pb-2 card-title text-center">
-                                    <h3>How to start</h3>
-                                </div>
-                            <div class="text-white-50 text-left " style="font-size: 19px;">
-                                <p> It's important for us to make you feel comfortable with using fastepic services.
-                                    To get direct help with first steps, please join official
-                                    <a href="https://t.me/EpicCash" class="text-light" style="font-size: 19px;"
-                                        target="_blank"><i class="fab fa-telegram-plane text-info">
-                                        </i> Telegram Epic-Cash</a>
-                                    and ask for help <span class="text-info">@PinsertIco</span> or <span
-                                        class="text-info">@blacktyg3r</span>
-                                    - we are there for you to help.
-                                </p>
-                                <p> In order to create account you will need to use an email address (fastepic team
-                                    recommend using <a class="text-warning" style="font-size: 19px;"
-                                        href="https://protonmail.com/" target="_blank">Protonmail</a>
-                                    due to strong secure and privacy, but you can use any email you want) and send some
-                                    coins there -
-                                    account and wallet will be automatically created after receive funds. To achive this
-                                    you can:
-                                    <dl class="row px-3 py-3">
-                                        <dt class="col-sm-3" style="color: #FFCC66;">Use CLI Wallet</dt>
-                                        <dd class="col-sm-9">Send coins from your <a
-                                                href="https://medium.com/epic-cash/epic-cash-send-and-receive-tutorial-a14945f7798"
-                                                class="text-warning" target="_blank">
-                                                Official CLI Wallet</a> typing in command line:
-                                            <p><code>epic-wallet send -d https://fastepic.eu/youremail 0.001</code></p>
-                                            <p> Where <code>0.001</code> is recommended amount - you can use any,<br>
-                                                and <code>youremail</code> is your full email address.
-                                        </dd>
-                                        <dt class="col-sm-3" style="color: #FFCC66;">Withdraw From Exchange</dt>
-                                        <dd class="col-sm-9">If you have your coins on exchange like Citex or BiHodl,
-                                            you can withdraw from there directly using address:
-                                            <p><code>http://fastepic.eu:13415/youremail</code></p>
-                                        </dd>
-
-                                        <dt class="col-sm-3" style="color: #FFCC66;">Ask For Help</dt>
-                                        <dd class="col-sm-9"> <span class="text-white"><img style="height: 23px;"
-                                                    class="ml-1 pb-1" src="{% static 'images/btn1.png' %}"> Epic-Cash
-                                            </span> is a community project,
-                                            there are many people to help you start your journey!
-                                            Just ask someone to send a small amount to your new account. Talk to us at
-                                            <a href="https://t.me/EpicCash" class="text-light" style="font-size: 19px;"
-                                                target="_blank"><i class="fab fa-telegram-plane text-info">
-                                                </i> Telegram </a> or
-                                            <a href="https://discordapp.com/invite/ZjnC6bh" class="text-light"
-                                                style="font-size: 19px;" target="_blank">
-                                                <i class="fab fa-discord text-info"></i> Discord</a>.
-                                        </dd>
-                                        <dt class="col-sm-3" style="color: #FFCC66;">Start Mining</dt>
-                                        <dd class="col-sm-9"> After start mining with
-                                            <a style="font-size: 19px;" class="text-warning"
-                                                href="https://fastepic.eu/pool" target="_blank">
-                                                fastepic pool</a> coins from pool will be automatically send to your
-                                            main account.
-                                        </dd>
-                                        <dt class="col-sm-3" style="color: #FFCC66;">Send email</dt>
-                                        <dd class="col-sm-9"> You can simply just send an email to
-                                            <u>cash@fastepic.eu</u> with title
-                                            "<i>give me account please</i>" to get your account created.
-                                        </dd>
-                                    </dl>
-                                </p>
-                                <p>From now you can get access to your fastepic account by using email
-                                    address at <a class="text-warning" style="font-size: 19px;"
-                                        href="https://fastepic.eu" target="_blank">fastepic.eu</a>.
-                                    New password is created and sent to you for each login attempt.</p>
-                                <img class="img-fluid mb-3" style="border-radius: 15px;"
-                                    src="{% static 'images/fast_epic_2.png' %}" alt="fastepic.eu">
-                                <p>At this point you are ready to start trade your <span class="text-light"><img
-                                            style="height: 20px;" class="ml-1 pb-1"
-                                            src="{% static 'images/btn1.png' %}"> Epic-Cash</span> for bitcoin
-                                    and other way round by using same email address at
-                                    <a class="text-warning" href="https://epic-ticker.tech/stock" target="_blank">Epic
-                                        Home Exchange</a>.
-                                    You can also send there your bitcoins, to buy more precious Epics :).
-                                </p>
-                                <p class="text-right text-muted">`blacktyger</p>
-                                <div class="pb-3"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Card 2-->
+            <!-- LEFT NAVBAR-->
+            <div class="col-xl-2 col-lg-auto column-left pr-3 pt-3">
+                {% include left_nav %}
             </div>
+            <!-- END LEFT NAVBAR-->
+
+            <!-- MAIN COLUMN-->
+            <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10  column-main pt-3">
+                <div class="row"> {% include fast %}</div>
+                
+            </div>
+            <!-- END MAIN COLUMN-->
+
+            <!-- RIGHT COLUMN-->
+            <div class="col-lg-3 col-md-3 sm-order-first mt-3 ml-3 ">
+                {% include right_nav %}
+            </div>
+            <!-- END RIGHT COLUMN-->
+
         </div>
-    </div>
-
-
-    <!-- END TABLES-->
     </div>
 
     {% include footer %}
     {% endblock %}
-
-
-    <a class="text-warning" href="https://epic-ticker.tech/stock" target="_blank">fastepic exchange</a>
-
 
 </body>
